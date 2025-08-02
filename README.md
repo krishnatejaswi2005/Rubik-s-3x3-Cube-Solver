@@ -27,9 +27,9 @@ A full-stack web application that takes any valid Rubik’s Cube scramble, compu
 /
 ├── server.py           # Flask backend solving logic
 ├── rubiks-ui/         # React + Bootstrap frontend
-└── README.md          
+└── README.md
 
-````
+```
 
 ---
 
@@ -37,15 +37,15 @@ A full-stack web application that takes any valid Rubik’s Cube scramble, compu
 
 ### Backend (Python)
 
-- [`pycuber`](https://github.com/SvenWerlen/pycuber): Cube representation and move application.  
-- [`kociemba`](https://pypi.org/project/kociemba/): Two-phase Rubik’s Cube solving algorithm.  
-- [`Flask`](https://flask.palletsprojects.com/): Lightweight web server to expose solve endpoint.  
+- [`pycuber`](https://github.com/SvenWerlen/pycuber): Cube representation and move application.
+- [`kociemba`](https://pypi.org/project/kociemba/): Two-phase Rubik’s Cube solving algorithm.
+- [`Flask`](https://flask.palletsprojects.com/): Lightweight web server to expose solve endpoint.
 - Standard library modules: `random`, `collections.Counter`, `argparse`, etc.
 
 ### Frontend (React)
 
-- [`React`](https://react.dev/): UI framework for interactive frontend.  
-- [`Bootstrap 5`](https://getbootstrap.com/): Styling, layout, and components for a clean minimal UI.  
+- [`React`](https://react.dev/): UI framework for interactive frontend.
+- [`Bootstrap 5`](https://getbootstrap.com/): Styling, layout, and components for a clean minimal UI.
 
 ---
 
@@ -54,6 +54,7 @@ A full-stack web application that takes any valid Rubik’s Cube scramble, compu
 1. **Scramble application**: The backend receives a scramble string (or generates a random one), and applies it to a fresh `pycuber.Cube()` instance.
 
 2. **Facelet string construction**:
+
    - Attempts to read the center sticker of each face to establish the canonical mapping (which color corresponds to U, R, F, D, L, B).
    - If the center is missing / unreliable, it falls back to using the majority color of that face (robust inference).
    - Builds a reverse mapping from normalized color names to face letters.
@@ -62,6 +63,7 @@ A full-stack web application that takes any valid Rubik’s Cube scramble, compu
 3. **Solving**: Passes the facelet string to `kociemba.solve(...)` which implements the **two-phase algorithm** to compute a sequence of moves that will solve the cube.
 
 4. **Verification**:
+
    - Applies that solution sequence back onto a copy of the scrambled cube.
    - Checks that each face’s stickers match its center (i.e., fully solved).
    - Returns both pre- and post-solution cube states and the solved flag.
@@ -78,16 +80,16 @@ A full-stack web application that takes any valid Rubik’s Cube scramble, compu
 
 ### Prerequisites
 
-- Python 3.10+  
-- Node.js 16+ (or newer) and npm (or yarn/pnpm)  
-- Git  
+- Python 3.10+
+- Node.js 16+ (or newer) and npm (or yarn/pnpm)
+- Git
 
 ### Clone the repository
 
 ```bash
 git clone https://github.com/krishnatejaswi2005/Rubik-s-3x3-Cube-Solver.git
 cd Rubik-s-3x3-Cube-Solver
-````
+```
 
 ---
 
@@ -99,17 +101,19 @@ cd Rubik-s-3x3-Cube-Solver
 python -m venv .venv
 ```
 
-* On Windows PowerShell:
+- On Windows PowerShell:
 
   ```powershell
   .\.venv\Scripts\Activate.ps1
   ```
-* On Windows CMD:
+
+- On Windows CMD:
 
   ```cmd
   .\.venv\Scripts\activate.bat
   ```
-* On macOS / Linux:
+
+- On macOS / Linux:
 
   ```bash
   source .venv/bin/activate
@@ -156,7 +160,7 @@ cd rubiks-ui
 npm install
 ```
 
-*or*
+_or_
 
 ```bash
 yarn install
@@ -166,12 +170,6 @@ yarn install
 
 ```bash
 npm run dev
-```
-
-*or*
-
-```bash
-npm start
 ```
 
 The React app will typically be available at `http://localhost:5173` or `http://localhost:3000` depending on setup.
@@ -185,19 +183,19 @@ The React app will typically be available at `http://localhost:5173` or `http://
 3. Click **Solve**.
 4. View:
 
-   * The scrambled cube.
-   * The solution sequence.
-   * The resulting cube after applying the solution.
-   * Whether the cube was successfully solved.
+   - The scrambled cube.
+   - The solution sequence.
+   - The resulting cube after applying the solution.
+   - Whether the cube was successfully solved.
 
 ---
 
 ## Possible Enhancements
 
-* Clickable cube editor to define arbitrary cube states.
-* Step-by-step animation of solution moves.
-* Image-based cube state input (via camera + color detection).
-* Docker Compose to bundle frontend + backend.
-* Authentication / history persistence.
+- Clickable cube editor to define arbitrary cube states.
+- Step-by-step animation of solution moves.
+- Image-based cube state input (via camera + color detection).
+- Docker Compose to bundle frontend + backend.
+- Authentication / history persistence.
 
 ---
